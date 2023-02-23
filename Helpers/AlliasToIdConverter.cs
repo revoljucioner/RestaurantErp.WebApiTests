@@ -1,4 +1,4 @@
-﻿namespace TestApplicationCore.Providers
+﻿namespace RestaurantErp.WebApiTests.Helpers
 {
     public class AlliasToIdConverter
     {

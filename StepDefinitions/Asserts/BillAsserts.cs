@@ -1,9 +1,4 @@
-﻿using BackendTestApplicationCore.Core;
-using BackendTestApplicationCore.Core.Extensions;
-using NUnit.Framework;
-using RestaurantErp.Core.Models.Discount;
-using RestaurantErp.Core.Models.Product;
-using RestaurantErp.WebApiTests.Providers;
+﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 

@@ -1,4 +1,4 @@
-﻿namespace BackendTestApplicationCore.Core.Extensions
+﻿namespace RestaurantErp.WebApiTests.Extensions
 {
     public static class DictionaryExtension
     {
@@ -8,7 +8,7 @@
             (
                 input.Select
                 (
-                    async pair => new { Key = pair.Key, Value = await pair.Value }
+                    async pair => new { pair.Key, Value = await pair.Value }
                 )
             );
             return pairs.ToDictionary(pair => pair.Key, pair => pair.Value);

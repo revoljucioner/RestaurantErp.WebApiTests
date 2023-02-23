@@ -1,6 +1,4 @@
-using BackendTestApplicationCore.Core.Extensions;
 using RestaurantErp.Core.Models.Order;
-using RestaurantErp.Core.Models.Product;
 using RestaurantErp.WebApiTests.Providers;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;

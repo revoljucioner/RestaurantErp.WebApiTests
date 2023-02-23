@@ -1,7 +1,5 @@
-using BackendTestApplicationCore.Core;
-using BackendTestApplicationCore.Core.Extensions;
 using RestaurantErp.Core.Models.Discount;
-using RestaurantErp.Core.Models.Product;
+using RestaurantErp.WebApiTests.Helpers;
 using RestaurantErp.WebApiTests.Providers;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
