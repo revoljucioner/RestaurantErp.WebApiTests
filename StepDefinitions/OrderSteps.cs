@@ -66,16 +66,4 @@ namespace RestaurantErp.WebApiTests.StepDefinitions
             _context.Bill =  await _provider.Checkout(_context.OrderId);
         }
     }
-
-    public class AddOrderItemDataSource
-    {
-        public int ProductIndex { get; set; }
-        public int Count { get; set; }
-    }
-
-    public class CancelOrderItemDataSource
-    {
-        public int ProductIndex { get; set; }
-        public int Count { get; set; }
-    }
 }

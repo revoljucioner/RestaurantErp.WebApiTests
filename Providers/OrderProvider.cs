@@ -5,26 +5,17 @@ using System.Text;
 
 namespace RestaurantErp.WebApiTests.Providers
 {
-    public class OrderProvider
+    public class OrderProvider: BaseProvider
     {
-        private string _baseUrl = "https://restauranterp.azurewebsites.net/";
-
-        private HttpClient _httpClient = new HttpClient();
-
-        //public OrderProvider(HttpClient httpClient)
-        //{
-        //    _httpClient = httpClient;
-        //}
-
         public async Task<Guid> Create()
         {
             HttpRequestMessage request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri($"{_baseUrl}/Order/CreateOrder")
+                RequestUri = new Uri($"{BaseUrl}/Order/CreateOrder")
             };
 
-            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            HttpResponseMessage response = await HttpClient.SendAsync(request);
 
             return JsonConvert.DeserializeObject<Guid>(await response.Content.ReadAsStringAsync());
         }
@@ -34,11 +25,11 @@ namespace RestaurantErp.WebApiTests.Providers
             HttpRequestMessage request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri($"{_baseUrl}/Order/AddItem"),
+                RequestUri = new Uri($"{BaseUrl}/Order/AddItem"),
                 Content = new StringContent(JsonConvert.SerializeObject(orderItemRequest), Encoding.UTF8, "application/json")
             };
             
-            await _httpClient.SendAsync(request);
+            await HttpClient.SendAsync(request);
         }
 
         public async Task Cancel(OrderItemRequest orderItemRequest)
@@ -46,11 +37,11 @@ namespace RestaurantErp.WebApiTests.Providers
             HttpRequestMessage request = new HttpRequestMessage
             {
                 Method = HttpMethod.Delete,
-                RequestUri = new Uri($"{_baseUrl}/Order/CancelItem"),
+                RequestUri = new Uri($"{BaseUrl}/Order/CancelItem"),
                 Content = new StringContent(JsonConvert.SerializeObject(orderItemRequest), Encoding.UTF8, "application/json")
             };
 
-            await _httpClient.SendAsync(request);
+            await HttpClient.SendAsync(request);
         }
 
         public async Task<BillExternal> Checkout(Guid id)
@@ -58,10 +49,10 @@ namespace RestaurantErp.WebApiTests.Providers
             HttpRequestMessage request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri($"{_baseUrl}/Order/Checkout?orderId={id}")
+                RequestUri = new Uri($"{BaseUrl}/Order/Checkout?orderId={id}")
             };
 
-            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            HttpResponseMessage response = await HttpClient.SendAsync(request);
 
             return JsonConvert.DeserializeObject<BillExternal>(await response.Content.ReadAsStringAsync());
         }

@@ -4,26 +4,18 @@ using System.Text;
 
 namespace RestaurantErp.WebApiTests.Providers
 {
-    public class ProductProvider
+    public class ProductProvider: BaseProvider
     {
-        private string _baseUrl = "https://restauranterp.azurewebsites.net/";
-        private HttpClient _httpClient = new HttpClient();
-
-        //public ProductProvider(HttpClient httpClient)
-        //{
-        //    _httpClient = httpClient;
-        //}
-
         public async Task<Guid> AddProduct(AddProductRequest productInfo)
         {
             HttpRequestMessage request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri($"{_baseUrl}/Admin/CreateProduct"),
+                RequestUri = new Uri($"{BaseUrl}/Admin/CreateProduct"),
                 Content = new StringContent(JsonConvert.SerializeObject(productInfo), Encoding.UTF8, "application/json")
             };
 
-            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            HttpResponseMessage response = await HttpClient.SendAsync(request);
 
             return JsonConvert.DeserializeObject<Guid>(await response.Content.ReadAsStringAsync());
         }

@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="testhost.dll.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="testhost.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Restaurant.Models" Version="1.0.0" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
@@ -18,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataSource\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
